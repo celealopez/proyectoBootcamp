@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ClientesService } from '../../service/clientes.service';
 
 @Component({
@@ -8,13 +8,19 @@ import { ClientesService } from '../../service/clientes.service';
 })
 export class ListaClientesComponent implements OnInit {
 
+
+  clientesList: Array <any>=[]
+
   constructor(private clientesService: ClientesService) {
-    clientesService.getList().subscribe((res:any)=>{
-      console.log(res)
+    clientesService.getList('https://jsonplaceholder.typicode.com/users').subscribe((res:any)=>{
+     
+      this.clientesList=res
+      
     })
    }
 
   ngOnInit(): void {
+   
   }
 
 }

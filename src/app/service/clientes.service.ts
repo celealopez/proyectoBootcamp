@@ -7,9 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class ClientesService {
 
   clientesList: Array <any>=[]
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    this.clientesList=new Array<any>()
 
-  getList(){
-    return this.http.get('https://jsonplaceholder.typicode.com/todos')
+  }
+
+ 
+  public getList(url:string){
+    return this.http.get(url)
   }
 }
